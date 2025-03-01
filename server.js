@@ -1,18 +1,11 @@
-const express = require("express");
-const cors = require("cors");
+const express = require('express')
+const app = express()
+const port = 8080
 
-const app = express();
-app.use(cors()); // Enable CORS
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
-// Dice roll endpoint
-app.get("/roll", (req, res) => {
-    const diceRoll = Math.floor(Math.random() * 6) + 1; // Generates a number between 1 and 6
-    res.json({ roll: diceRoll });
-});
-
-// Start the server
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
-
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
